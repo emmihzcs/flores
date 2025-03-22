@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Regalo de Flores Amarillas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #ffcc00;
+        }
+        .countdown {
+            font-size: 2em;
+            margin-top: 20px;
+            color: #f39c12;
+        }
+        .story {
+            font-size: 1.2em;
+            margin-top: 30px;
+            max-width: 670px;
+            margin: 0 auto;
+        }
+	.image-container {
+            margin-top: 30px;
+            text-align: center; /* Asegura que la imagen esté centrada */
+        }
+        .image-container img {
+            max-width: 25%;  /* Para que la imagen sea responsive */
+            height: auto;     /* Mantiene la proporción de la imagen */
+        }
+    </style>
+</head>
+<body>
+
+    <h1>¡Hola, mi amor!</h1>
+    <p class="story">
+        Sé que hoy esperabas recibir unas hermosas flores amarillas de mi parte, pero quiero contarte algo curioso... ¡Un elfo travieso me las robó! Así que tuve que ir a buscarlo, y por eso no pude entregártelas hoy. 
+        Pero no te preocupes, porque en tan solo <br><span class="countdown" id="countdown"></span><br> tendrás tu ramo de flores amarillas. 
+        Estoy contando los días para sorprenderte con algo especial. 💛
+    </p>
+	<div class="image-container">
+        <img src="images/bosque.png" alt="Flores Amarillas">
+    </div>
+
+    <script>
+        // Establece la fecha de entrega como 24 de marzo de 2025
+        const deliveryDate = new Date("March 24, 2025 00:00:00");
+
+        // Función para actualizar la cuenta regresiva
+        function updateCountdown() {
+            const now = new Date();
+            const timeRemaining = deliveryDate - now;
+
+            if (timeRemaining <= 0) {
+                document.getElementById("countdown").innerHTML = "¡Ya es el día!";
+            } else {
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                document.getElementById("countdown").innerHTML = `${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos`;
+            }
+        }
+
+        // Actualizar la cuenta regresiva cada segundo
+        setInterval(updateCountdown, 1000);
+    </script>
+
+</body>
+</html>
